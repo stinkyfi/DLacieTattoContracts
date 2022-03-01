@@ -19,9 +19,8 @@ import "@openzeppelin/contracts/access/Ownable.sol";
 import "@openzeppelin/contracts/utils/Counters.sol";
 import "@openzeppelin/contracts/security/Pausable.sol";
 import "@openzeppelin/contracts/token/ERC721/extensions/ERC721Enumerable.sol";
-import "@openzeppelin/contracts/token/ERC721/extensions/ERC721Burnable.sol";
 
-contract Narcissus is ERC721, Ownable, Pausable, ERC721Enumerable, ERC721Burnable {
+contract Narcissus is ERC721, Ownable, Pausable, ERC721Enumerable {
     using Counters for Counters.Counter;
 
     // @notice Counter for number of minted characters
@@ -30,19 +29,22 @@ contract Narcissus is ERC721, Ownable, Pausable, ERC721Enumerable, ERC721Burnabl
     uint256 public immutable maxSupply = 100;
     // Base URI used for token metadata
     string private _baseTokenUri;     
+    // Has the NFT Piñata been broken
+    bool public brokenPinata;
 
     constructor(
         string memory name,
-        string memory symbol,
-        string memory _tokenURI
+        string memory symbol
     ) ERC721(name, symbol) {
-        _baseTokenUri = _tokenURI;
+        brokenPinata = false;
     }
 
     function breakPinata() public onlyOwner {
+        require(brokenPinata, "The immutable pinata has already been broken.");
         // 0-99 = 100 total NFTs
-        for(uint256 i = 0; i < 100; i++)
+        for(uint256 i = 0; i < maxSupply; i++)
         {
+            //Mint count starts at 1
             _tokenIds.increment();
             _safeMint(_msgSender(), _tokenIds.current());
         }  
