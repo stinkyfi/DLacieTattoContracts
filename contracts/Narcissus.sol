@@ -37,13 +37,15 @@ contract Narcissus is ERC721, Ownable, Pausable, ERC721Enumerable, ERC721Burnabl
         string memory _tokenURI
     ) ERC721(name, symbol) {
         _baseTokenUri = _tokenURI;
+    }
 
+    function breakPinata() public onlyOwner {
         // 0-99 = 100 total NFTs
         for(uint256 i = 0; i < 100; i++)
         {
             _tokenIds.increment();
             _safeMint(_msgSender(), _tokenIds.current());
-        }        
+        }  
     }
 
     /*
