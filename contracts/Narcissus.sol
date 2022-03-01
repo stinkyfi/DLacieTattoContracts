@@ -40,7 +40,7 @@ contract Narcissus is ERC721, Ownable, Pausable, ERC721Enumerable {
     }
 
     function breakPinata() public onlyOwner {
-        require(brokenPinata, "The immutable pinata has already been broken.");
+        require(!brokenPinata, "The immutable pinata has already been broken.");
         // 0-99 = 100 total NFTs
         for(uint256 i = 0; i < maxSupply; i++)
         {

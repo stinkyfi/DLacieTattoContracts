@@ -1,7 +1,5 @@
-const BENEFICIARY = "";
 const NAME = "Narcissus";
 const TICKER = "NCUS";
-const TOKEN_URI = "";
 
 async function main() {
   if (network.name === "hardhat") {
@@ -22,7 +20,7 @@ async function main() {
   console.log("Account balance:", (await deployer.getBalance()).toString());
 
   const Token = await ethers.getContractFactory("Narcissus");
-  const token = await Token.deploy(BENEFICIARY, NAME, TICKER, TOKEN_URI);
+  const token = await Token.deploy(NAME, TICKER);
   await token.deployed();
 
   console.log("NFT address:", token.address);
@@ -39,14 +37,14 @@ function saveFrontendFiles(token) {
   }
 
   fs.writeFileSync(
-    contractsDir + "/contract-address.json",
+    contractsDir + "/ABI/contract-address.json",
     JSON.stringify({ DegenDwarfs: token.address}, undefined, 2)
   );
 
   const TokenArtifact = artifacts.readArtifactSync("Narcissus");
 
   fs.writeFileSync(
-    contractsDir + "/Narcissus.json",
+    contractsDir + "/ABI/Narcissus.json",
     JSON.stringify(TokenArtifact, null, 2)
   );
 }
