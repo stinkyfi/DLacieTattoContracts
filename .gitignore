@@ -1,0 +1,10 @@
+node_modules
+.idea
+.env
+.DS_Store
+
+#Hardhat files
+cache
+artifacts
+contracts/.deps
+hardhat.config.js
