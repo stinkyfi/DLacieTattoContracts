@@ -1,6 +1,6 @@
 # <img src="https://github.com/stinkyfi/DLacieTattoContracts/blob/main/images/NARCISSUS.png" width="500">
 
-Degen Dwarfs is a Guild of 6969 Dwarfs on the Ethereum blockchain, equipped with gear earned from their adventures through DeFi. The community aims to enhance the DeFi experience, using shared knowledge and funds to find new projects and minimize how often we are exit liquidity. Come join us at twitter.com/DegenDwarfs!
+100 immutable supply NFT, used to get access to a special form. Win the Raffles and get a chance to cut the line.
 
 
 ## Run Contract Locally
@@ -9,7 +9,7 @@ The first things you need to do are cloning this repository and installing its
 dependencies:
 
 ```sh
-git clone https://github.com/stinkyfi/DegenDwarfs.git
+git clone https://github.com/stinkyfi/DLacieTattoContracts.git
 cd DegenDwarfs
 npm install
 ```
